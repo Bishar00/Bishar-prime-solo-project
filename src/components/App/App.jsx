@@ -7,7 +7,7 @@ import {
 } from 'react-router-dom';
 
 import { useDispatch, useSelector } from 'react-redux';
-
+import Nav2 from '../Nav2/Nav2';
 import Nav from '../Nav/Nav';
 import Footer from '../Footer/Footer';
 
@@ -19,6 +19,7 @@ import InfoPage from '../InfoPage/InfoPage';
 import LandingPage from '../LandingPage/LandingPage';
 import LoginPage from '../LoginPage/LoginPage';
 import RegisterPage from '../RegisterPage/RegisterPage';
+
 
 import './App.css';
 
@@ -115,7 +116,9 @@ function App() {
             <h1>404</h1>
           </Route>
         </Switch>
+        <Nav2 />
         <Footer />
+
       </div>
     </Router>
   );

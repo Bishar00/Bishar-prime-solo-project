@@ -1,9 +1,9 @@
 import React from 'react';
 
-function Profile(){
+function Donations(){
     return (
         <div>
-            <h1>Profile</h1>
+            <h1>Donations</h1>
         </div>
     )
 };
@@ -11,4 +11,4 @@ function Profile(){
 
 
 
-export default Profile;
+export default Donations;

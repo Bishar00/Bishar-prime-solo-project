@@ -18,10 +18,10 @@ import { useHistory } from 'react-router-dom';
   return (
 
 
-    <Box style= {{margin:"auto"}}>
+    <Box >   
       <BottomNavigation
         showLabels={true}
-        sx= {{ width: "100%", postion: "absolute", bottom:0}}        
+        sx= {{ backgroundcolor: "black", width: "100%", postion: "absolute", bottom:0}}        
         value={value}
         onChange={(event, newValue) => {
           setValue(newValue);
@@ -59,6 +59,7 @@ import { useHistory } from 'react-router-dom';
         icon={<CurrencyExchangeSharpIcon />} />
       </BottomNavigation>
     </Box>
+    
   );
 }
 

@@ -43,7 +43,23 @@ pool.query(sqlQuery, sqlValues)
     res.sendStatus(500);
 })
 })
-
+router.put('/', (req, res) => {
+    // Update this single student
+    const idToUpdate = req.user.id;
+    const sqlText = `
+      UPDATE posts
+        SET "title"=$1, "description"=$2
+        WHERE id=$3
+    `;
+    pool.query(sqlText, [req.body.title, req.body.description, idToUpdate])
+        .then((result) => {
+            res.sendStatus(200);
+        })
+        .catch((error) => {
+            console.log(`Error making database query ${sqlText}`, error);
+            res.sendStatus(500);
+        });
+});
 
 
 module.exports = router

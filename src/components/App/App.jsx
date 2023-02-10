@@ -41,6 +41,7 @@ function App() {
     <Router>
       <div>
         <Nav />
+        {/* <HorizontalNavBar /> */}
         <Switch>
           {/* Visiting localhost:3000 will redirect to localhost:3000/home */}
           <Redirect exact from="/" to="/home" />
@@ -53,11 +54,7 @@ function App() {
           >
             <AboutPage />
           </Route>
-
-
-         
-
-          
+   
           {/* For protected routes, the view could show one of several things on the same route.
             Visiting localhost:3000/user will show the UserPage if the user is logged in.
             If the user is not logged in, the ProtectedRoute will show the LoginPage (component).
@@ -94,6 +91,13 @@ function App() {
             path="/Post"
           >
             <Post />
+            </ProtectedRoute>
+            <ProtectedRoute
+            // shows AboutPage at all times (logged in or not)
+            exact
+            path="/EditPosts"
+          >
+            <EditPost />
             </ProtectedRoute>
             
             <ProtectedRoute
@@ -163,7 +167,7 @@ function App() {
           </Route>
         </Switch>
         
-        {/* <HorizontalNavBar /> */}
+        
         <Nav2 />
         {/* <Footer /> */}
 

@@ -3,14 +3,18 @@ import PostsForm from '../PostsForm/PostsForm';
 import { useDispatch } from 'react-redux';
 import { useSelector } from 'react-redux';
 import { useEffect } from 'react';
-
+import HomeItem from '../HomeItem/HomeItem';
 
 function Home(){
     const dispatch = useDispatch();
     const posts = useSelector((store) => store.postsReducer);
+    const user =useSelector((store) => store.user)
 
     useEffect(() => {
-        dispatch({ type: 'FETCH_POSTS' });
+        dispatch({ 
+            type: 'FETCH_POSTS',
+            payload: user.id
+         });
       }, [dispatch]);
 
     return (
@@ -20,10 +24,7 @@ function Home(){
         {
             posts.map((post) => {
                 return (
-                    <div key= {post.id}>
-                    {post.title}
-                    {post.description}
-                    </div>
+                    <HomeItem key={post.id} post={post}/>
                 )
             })
         }

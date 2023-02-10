@@ -10,88 +10,34 @@ import { useHistory } from 'react-router-dom';
 import { Stack } from '@mui/system';
 import { useTheme } from '@emotion/react';
 
-
-function HorizontalNavBar() {
-    const [value, setValue] = React.useState(0);
-    const History= useHistory()
-    const theme = useTheme();
+import Logo from "../../Assets/Images/logo.ico"
+const HorizontalNavBar = () =>{
     
-    console.log(theme);
+  const theme = useTheme()
+  console.log(theme);
 
       return (
-  
-<>
-      <Box>
-    
-      <Box>
-        <BottomNavigation
-          showLabels={true}
-          value={value}
-          onChange={(event, newValue) => {
-            setValue(newValue);
-          }}
-        >
-            
-          <Box 
-          sx={{backgroundColor:"White", 
-          boxShadow: "0px 0px 2px rgba(0, 0, 0, 0.25)", 
-          height:"100vh", 
-          width:100}}
-          >
-             
-
-           <Stack direction="column" alignItem= {"center"} sx={{width:"100%"}} > 
-          <Box 
-            sx= {{
-            backgroundColor: "White",
-            height: 64,
-            width: 64,
-            borderRadius: 1.5
-          }} >
-            <h1> top of box</h1>
-          </Box>
-          </Stack>
-
-          </Box>
-        
-          <Box> 
-
-          <BottomNavigationAction className='1'
-          sx= {{height:"100vh", width: "100"}}
-          value= {value}
-          onClick={()=>(History.push('/'))}
-          icon={<FavoriteBorderSharpIcon />} />
-           </Box>
-           
-        <Box> 
-          <BottomNavigationAction 
-          sx= {{height:"100vh", width: "100"}}
-          value= {value}
-          onClick={()=>(History.push('/'))}       
-          icon={<ChatOutlinedIcon />} />
-        </Box>
-
-        <Box> 
-          <BottomNavigationAction 
-          sx= {{height:"100vh", width: "100"}}          
-          value= {value}
-          onClick={()=>(History.push('/'))}          
-          icon={<SettingsOutlinedIcon />} />
-        </Box>
-        
-        <Box> 
-          <BottomNavigationAction 
-          sx= {{height:"100vh", width: "100"}}
-          value= {value}
-          onClick={()=>(History.push('/profile'))}  
-          icon={<PermIdentityOutlinedIcon />} />
-        </Box>
-          
-        </BottomNavigation>
-        </Box>
-      </Box>
+  <>
+  <Box 
+  sx={{ 
+    display:'flex',
+    boxShadow: "0px 0px 4px rgba(0, 0, 0, 0.25)", 
+    height: "100vh", 
+    width: 100}} >
       
-      </>
+      <Stack direction="column" alignItems={"center"} sx={{width: "100"}}>
+      <Box sx={{
+        height: 64,
+        width: 64,
+        borderRadius: 1.5
+      }}>
+        <img src={Logo} />
+      </Box>
+      </Stack>
+      
+  </Box>
+  </>   
+    
     );
   }
 

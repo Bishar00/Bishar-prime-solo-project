@@ -14,8 +14,8 @@ const response = yield axios({
     }
 })
 yield put({
-    type: 'FETCH_ITEM',
-    payload: response.data
+    type: 'FETCH_POSTS',
+    // payload: response.data
 })
 
 }

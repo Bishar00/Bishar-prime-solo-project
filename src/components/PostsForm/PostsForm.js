@@ -9,7 +9,22 @@ const [descriptionInput, setDiscriptionInput] =useState('');
 
 const History = useHistory();
 
-const makeNewPost = (event) => {
+// const makeNewPost = (event) => {
+//     event.preventDefault();
+//     dispatch({
+//         type:'SAGA/ADD_TO_POSTS',
+//         payload:{
+//             title: titleInput,
+//             description: descriptionInput
+//         }
+//     })
+//     //clear input 
+// setTitleInput('');
+// setDiscriptionInput('');
+
+// }
+
+const goToHomePage = (event) => {
     event.preventDefault();
     dispatch({
         type:'SAGA/ADD_TO_POSTS',
@@ -22,16 +37,13 @@ const makeNewPost = (event) => {
 setTitleInput('');
 setDiscriptionInput('');
 
-}
-
-const goToHomePage = () => {
     History.push('/home')
   }
 
 
 return (
     <>
-    <form onSubmit={makeNewPost}>
+    <form onSubmit={goToHomePage}>
         <input
         value={titleInput}
         placeholder= "Enter item Title"
@@ -44,7 +56,7 @@ return (
         onChange={(event) => {setDiscriptionInput (event.target.value)}}
         />
 
-        <button onClick={goToHomePage}>
+        <button type= 'submit'>
             Post 
         </button>
 

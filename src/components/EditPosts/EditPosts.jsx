@@ -1,25 +1,30 @@
 import React from "react";
-import { useState,useSelector } from "react";
+import { useState } from "react";
+import { useSelector } from "react-redux";
 import { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom";
+import { useParams } from "react-router-dom";
 
-function editPostsForm(){
+function editPosts(){
   const [titleInput, setTitleInput] =useState('');
   const [descriptionInput, setDiscriptionInput] =useState('');
     
-  const params = useParams();
+ 
     const dispatch = useDispatch();
+    const params= useParams()
     const studentToEdit = useSelector((store) => store.studentToEdit);
     const history = useHistory();
-
+    
     function updatePost(){
+      history.push('/Home')
       dispatch({
         type: 'SAGA/POST_TO_EDIT',
         payload: {
           title: titleInput,
           description: descriptionInput
         }
+
       })
     }
 
@@ -55,4 +60,4 @@ function editPostsForm(){
         </>
     )
     }
-    export default editPostsForm;
+    export default editPosts;

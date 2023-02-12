@@ -18,10 +18,11 @@ import { useHistory } from 'react-router-dom';
   return (
 
 
-    <Box >   
+    <div className='footer'>   
       <BottomNavigation
+      
         showLabels={true}
-        sx= {{ backgroundcolor: "black", width: "100%", postion: "absolute", bottom:0}}        
+        sx= {{ backgroundcolor: "black", width: "100%", postion: "absolute", bottom:0, borderTop: '1px solid #ddd'}}        
         value={value}
         onChange={(event, newValue) => {
           setValue(newValue);
@@ -58,7 +59,7 @@ import { useHistory } from 'react-router-dom';
         onClick={()=>(History.push('/Subscriptions'))}          
         icon={<CurrencyExchangeSharpIcon />} />
       </BottomNavigation>
-    </Box>
+    </div>
     
   );
 }

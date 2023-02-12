@@ -1,4 +1,4 @@
-html,
+/* html,
 body,
 #react-root {
   height: 100%;
@@ -12,21 +12,21 @@ body {
 img {
   display: inline-block;
   max-width: 100%;
-}
+} */
 
 /* --------------------------------------------------------------------------------
 Container
 -------------------------------------------------------------------------------- */
 
-.container {
+/* .container {
   padding: 20px;
-}
+} */
 
 /* --------------------------------------------------------------------------------
 Button
 -------------------------------------------------------------------------------- */
 
-.btn {
+/* .btn {
   display: inline-block;
   padding: 10px 20px;
   border-color: #014041;
@@ -37,9 +37,9 @@ Button
   font-size: 1.1rem;
   outline: 0;
   cursor: pointer;
-}
+} */
 
-.btn_sizeMin {
+/* .btn_sizeMin {
   min-height: 50px;
   min-width: 100px;
 }
@@ -57,10 +57,10 @@ Button
 .btn:hover {
   background-color: #8f8f8f;
   text-decoration: none;
-}
+} */
 
 /* This line makes the "Register" and "Login" buttons look like links */
-.btn_asLink {
+/* .btn_asLink {
   padding: 0;
   border-width: 0;
   border-bottom: 1px solid #444;
@@ -74,13 +74,13 @@ Button
   background-color: transparent;
   border-color: #909090;
   color: #008183;
-}
+} */
 
 /* --------------------------------------------------------------------------------
 Alert
 -------------------------------------------------------------------------------- */
 
-.alert {
+/* .alert {
   box-sizing: border-box;
   padding: 15px 10px;
   margin: 15px 0;
@@ -89,13 +89,13 @@ Alert
   border-radius: 3px;
   color: #e01616;
   font-size: 0.8rem;
-}
+} */
 
 /* --------------------------------------------------------------------------------
 Form Treatment
 -------------------------------------------------------------------------------- */
 
-.formPanel {
+/* .formPanel {
   box-sizing: border-box;
   width: 400px;
   max-width: 100%;
@@ -109,4 +109,47 @@ Form Treatment
 input {
   margin: 5px;
   margin-bottom: 10px;
+} */
+
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.container {
+  display: grid;
+  grid-template-columns: 1fr 50px; /* home page width 1fr, sidebar width 80px */
+  grid-template-rows: auto 1fr auto; /* header height auto, content height 1fr, footer height auto */
+  grid-template-areas: "header header"
+                       "content sidebar"
+                       "footer footer";
+}
+
+.sidebar {
+  grid-area: sidebar;
+  background-color: #fff;
+  padding: 20px;
+  max-width: 50px; /* limit sidebar width to 80px */
+  border-left: 1px solid #ddd;
+}
+
+.header {
+  grid-area: header;
+  background-color: #333;
+  color: #fff;
+  padding: 20px;
+}
+
+.content {
+  grid-area: content;
+  background-color: #fff;
+  padding: 20px;
+ height: calc(100vh - 50px);
+}
+
+.footer {
+  grid-area: footer;
+  color: #fff;
+  height: 50px !important;
 }

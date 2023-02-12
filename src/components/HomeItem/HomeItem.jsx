@@ -3,7 +3,7 @@ function HomeItem({post}){
 const history = useHistory()
 
 const handleEdit = () => {
-history.push('/EditPosts')
+history.push(`/EditPosts/${post.id}`)
 }
 
     return (
@@ -15,7 +15,7 @@ history.push('/EditPosts')
         {post.description}
        </div>
        <div>
-        <button>
+        <button onClick={handleEdit}>
             Edit
         </button>
        </div>

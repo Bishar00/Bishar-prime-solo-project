@@ -1,89 +1,69 @@
-import React, { useEffect } from 'react';
+import React, { useEffect } from "react";
 
 import {
   HashRouter as Router,
   Redirect,
   Route,
   Switch,
-  
-} from 'react-router-dom';
+} from "react-router-dom";
 
-import { useDispatch, useSelector } from 'react-redux';
-import Nav2 from '../Nav2/Nav2';
-import Nav from '../Nav/Nav';
-import HorizontalNavBar from '../HorizontalNavBar/HorizontalNavBar';
-import Footer from '../Footer/Footer';
+import { useDispatch, useSelector } from "react-redux";
+import Nav2 from "../Nav2/Nav2";
+import Nav from "../Nav/Nav";
+import Footer from "../Footer/Footer";
+import EditPosts from "../EditPosts/EditPosts";
 
-import ProtectedRoute from '../ProtectedRoute/ProtectedRoute';
+import ProtectedRoute from "../ProtectedRoute/ProtectedRoute";
 
-import AboutPage from '../AboutPage/AboutPage';
-import UserPage from '../UserPage/UserPage';
-import LandingPage from '../LandingPage/LandingPage';
-import LoginPage from '../LoginPage/LoginPage';
-import RegisterPage from '../RegisterPage/RegisterPage';
+import AboutPage from "../AboutPage/AboutPage";
+import UserPage from "../UserPage/UserPage";
+import LandingPage from "../LandingPage/LandingPage";
+import LoginPage from "../LoginPage/LoginPage";
+import RegisterPage from "../RegisterPage/RegisterPage";
 
-import './App.css';
-import Trending from '../Trending/Trending';
-import Post from '../Post/Post';
-import Donations from '../Donations/Donations';
-import Subscriptions from '../Subscriptions/Subscriptions';
-import Home from '../Home/Home';
+import "./App.css";
+import Trending from "../Trending/Trending";
+import Post from "../Post/Post";
+import Donations from "../Donations/Donations";
+import Subscriptions from "../Subscriptions/Subscriptions";
+import Home from "../Home/Home";
+import VerticalNavBar from "../VerticalNavBar/VerticalNavBar";
+
 function App() {
   const dispatch = useDispatch();
 
-  const user = useSelector(store => store.user);
+  const user = useSelector((store) => store.user);
 
   useEffect(() => {
-    dispatch({ type: 'FETCH_USER' });
+    dispatch({ type: "FETCH_USER" });
   }, [dispatch]);
 
   return (
     <Router>
-      <div>
-        <Nav />
-        {/* <HorizontalNavBar /> */}
-        <Switch>
-          {/* Visiting localhost:3000 will redirect to localhost:3000/home */}
-          <Redirect exact from="/" to="/home" />
-
-          {/* Visiting localhost:3000/about will show the about page. */}
-          <Route
-            // shows AboutPage at all times (logged in or not)
-            exact
-            path="/about"
-          >
-            <AboutPage />
-          </Route>
-   
-          {/* For protected routes, the view could show one of several things on the same route.
-            Visiting localhost:3000/user will show the UserPage if the user is logged in.
-            If the user is not logged in, the ProtectedRoute will show the LoginPage (component).
-            Even though it seems like they are different pages, the user is always on localhost:3000/user */}
+      <div className="container">
+        <div className="content">
           <ProtectedRoute
-            // logged in shows UserPage else shows LoginPage
-            exact
-            path="/user"
-          >
-            <UserPage />
-          </ProtectedRoute>
-
-          <ProtectedRoute
-          
-            // shows AboutPage at all times (logged in or not)
-            exact
-            path="/Trending"
-          >
-            <Trending />
-            </ProtectedRoute>
-
-            <ProtectedRoute
-          
             // shows AboutPage at all times (logged in or not)
             exact
             path="/Home"
           >
             <Home />
-            </ProtectedRoute>
+          </ProtectedRoute>
+        </div>
+
+        <div className="sidebar">
+          <VerticalNavBar />
+    
+        </div>
+
+        <div className="footer">
+          <ProtectedRoute
+            // shows AboutPage at all times (logged in or not)
+            exact
+            path="/Trending"
+          >
+            <Trending />
+          </ProtectedRoute>
 
           <ProtectedRoute
             // shows AboutPage at all times (logged in or not)
@@ -91,86 +71,25 @@ function App() {
             path="/Post"
           >
             <Post />
-            </ProtectedRoute>
-            <ProtectedRoute
-            // shows AboutPage at all times (logged in or not)
-            exact
-            path="/EditPosts"
-          >
-            <EditPost />
-            </ProtectedRoute>
-            
-            <ProtectedRoute
+          </ProtectedRoute>
+
+          <ProtectedRoute
             // shows AboutPage at all times (logged in or not)
             exact
             path="/Subscriptions"
           >
             <Subscriptions />
-            </ProtectedRoute>
+          </ProtectedRoute>
 
-            <ProtectedRoute
+          <ProtectedRoute
             // shows AboutPage at all times (logged in or not)
             exact
             path="/Donations"
           >
             <Donations />
-            
           </ProtectedRoute>
-
-          
-
-          <Route
-            exact
-            path="/login"
-          >
-            {user.id ?
-              // If the user is already logged in, 
-              // redirect to the /user page
-              <Redirect to="/user" />
-              :
-              // Otherwise, show the login page
-              <LoginPage />
-            }
-          </Route>
-
-          <Route
-            exact
-            path="/registration"
-          >
-            {user.id ?
-              // If the user is already logged in, 
-              // redirect them to the /user page
-              <Redirect to="/user" />
-              :
-              // Otherwise, show the registration page
-              <RegisterPage />
-            }
-          </Route>
-
-          <Route
-            exact
-            path="/home"
-          >
-            {user.id ?
-              // If the user is already logged in, 
-              // redirect them to the /user page
-              <Redirect to="/user" />
-              :
-              // Otherwise, show the Landing page
-              <LandingPage />
-            }
-          </Route>
-
-          {/* If none of the other routes matched, we will show a 404. */}
-          <Route>
-            <h1>404</h1>
-          </Route>
-        </Switch>
-        
-        
+        </div>
         <Nav2 />
-        {/* <Footer /> */}
-
       </div>
     </Router>
   );

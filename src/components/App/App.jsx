@@ -42,13 +42,25 @@ function App() {
     <Router>
       <div className="container">
         <div className="content">
+          
           <ProtectedRoute
             // shows AboutPage at all times (logged in or not)
             exact
             path="/Home"
           >
             <Home />
+
           </ProtectedRoute>
+          <div>
+          <ProtectedRoute
+            // shows AboutPage at all times (logged in or not)
+            exact
+            path="/EditPosts/:id"
+          >
+            <EditPosts />
+            </ProtectedRoute>
+            </div>
+          
         </div>
 
         <div className="sidebar">
@@ -71,6 +83,7 @@ function App() {
             path="/Post"
           >
             <Post />
+            
           </ProtectedRoute>
 
           <ProtectedRoute

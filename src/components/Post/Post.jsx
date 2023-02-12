@@ -14,6 +14,7 @@ function Post(){
     
       return (
         <div>
+            
             <PostsForm />
            <h1>Posts</h1>
         {

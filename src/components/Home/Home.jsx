@@ -1,4 +1,5 @@
 import React from 'react';
+import './Home.css'
 import PostsForm from '../PostsForm/PostsForm';
 import { useDispatch } from 'react-redux';
 import { useSelector } from 'react-redux';
@@ -18,16 +19,19 @@ function Home(){
       }, [dispatch]);
 
     return (
-        <div>
+        <div className="elements">
             
            <h1>Home</h1>
+           <div className='home'>
         {
+            
             posts.map((post) => {
                 return (
                     <HomeItem key={post.id} post={post}/>
                 )
             })
         }
+        </div>
       </div>
     )
 };

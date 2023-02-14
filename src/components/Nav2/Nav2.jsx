@@ -1,67 +1,58 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Box from '@mui/material/Box';
 import BottomNavigation from '@mui/material/BottomNavigation';
 import BottomNavigationAction from '@mui/material/BottomNavigationAction';
-import EmojiObjectsIcon from '@mui/icons-material/EmojiObjects';import FavoriteIcon from '@mui/icons-material/Favorite';
+import EmojiObjectsIcon from '@mui/icons-material/EmojiObjects';
+import FavoriteIcon from '@mui/icons-material/Favorite';
 import TrendingUpSharpIcon from '@mui/icons-material/TrendingUpSharp';
 import PagesSharpIcon from '@mui/icons-material/PagesSharp';
 import VolunteerActivismSharpIcon from '@mui/icons-material/VolunteerActivismSharp';
 import CurrencyExchangeSharpIcon from '@mui/icons-material/CurrencyExchangeSharp';
-import { Route } from "react-router-dom";
 import { useHistory } from 'react-router-dom';
 
+const Nav2 = () => {
+  const [value, setValue] = useState(0);
+  const history = useHistory();
 
- function Nav2() {
-  const [value, setValue] = React.useState(0);
-//   const route = Route();
-    const History= useHistory()
+  const handleNavigation = (event, newValue) => {
+    setValue(newValue);
+    switch (newValue) {
+      case 0:
+        history.push('/home');
+        break;
+      case 1:
+        history.push('/trending');
+        break;
+      case 2:
+        history.push('/post');
+        break;
+      case 3:
+        history.push('/donations');
+        break;
+      case 4:
+        history.push('/subscriptions');
+        break;
+      default:
+        break;
+    }
+  };
+
   return (
-
-
-    <div className='footer'>   
-      <BottomNavigation
-      
-        showLabels={true}
-        sx= {{ backgroundcolor: "black", width: "100%", postion: "absolute", bottom:0, borderTop: '1px solid #ddd'}}        
-        value={value}
-        onChange={(event, newValue) => {
-          setValue(newValue);
-        }}
-      >
-        <BottomNavigationAction 
-        label="Home" 
-        value= {value}
-        onClick={()=>(History.push('/Home'))}
-        icon={<EmojiObjectsIcon />} />
-        
-
-        <BottomNavigationAction 
-        label="Trending" 
-        value= {value}
-        onClick={()=>(History.push('/Trending'))}       
-        icon={<TrendingUpSharpIcon />} />
-
-        <BottomNavigationAction 
-        label="Post" 
-        value= {value}
-        onClick={()=>(History.push('/Post'))}          
-        icon={<PagesSharpIcon />} />
-
-        <BottomNavigationAction 
-        label="Donations" 
-        value= {value}
-        onClick={()=>(History.push('/Donations'))}  
-        icon={<VolunteerActivismSharpIcon />} />
-
-        <BottomNavigationAction 
-        label="Subscriptions"       
-        value= {value}
-        onClick={()=>(History.push('/Subscriptions'))}          
-        icon={<CurrencyExchangeSharpIcon />} />
-      </BottomNavigation>
-    </div>
-    
+    <Box className="footer" sx={{ display: 'flex', justifyContent: 'center' }}>
+      <Box sx={{ flexBasis: '300px' }}>
+        {/* Add your sidebar component here */}
+      </Box>
+      <Box sx={{ flexBasis: '100%',width:'100%' }}>
+        <BottomNavigation value={value} onChange={handleNavigation}>
+          <BottomNavigationAction label="Home" icon={<EmojiObjectsIcon />} />
+          <BottomNavigationAction label="Trending" icon={<TrendingUpSharpIcon />} />
+          <BottomNavigationAction label="Post" icon={<PagesSharpIcon />} />
+          <BottomNavigationAction label="Donations" icon={<VolunteerActivismSharpIcon />} />
+          <BottomNavigationAction label="Subscriptions" icon={<CurrencyExchangeSharpIcon />} />
+        </BottomNavigation>
+      </Box>
+    </Box>
   );
-}
+};
 
 export default Nav2;

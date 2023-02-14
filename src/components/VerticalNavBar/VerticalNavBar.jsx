@@ -1,27 +1,70 @@
-import './VerticalNavBar.css'
 import React from 'react';
+import { makeStyles } from '@mui/styles';
+import Drawer from '@mui/material/Drawer';
+import List from '@mui/material/List';
+import ListItem from '@mui/material/ListItem';
+import ListItemIcon from '@mui/material/ListItemIcon';
+import ListItemText from '@mui/material/ListItemText';
 import PermIdentityIcon from '@mui/icons-material/PermIdentity';
 import SettingsIcon from '@mui/icons-material/Settings';
 import MessageIcon from '@mui/icons-material/Message';
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
-const VerticalNavBar = () =>{
-    
- return(
-      <div className="sidebar-container">
-        
-          <ul className="elements">
-            <li><FavoriteBorderIcon/></li>
-            <li><MessageIcon/></li>
-            <li>
-              <SettingsIcon/>
-            </li>
-            <li>
-              <PermIdentityIcon/>
-            </li>
-          </ul>
-      </div>
-    
-    )
-  }
+import { useHistory } from 'react-router-dom';
 
-  export default VerticalNavBar;
+
+const drawerWidth = 50;
+
+const useStyles = makeStyles((theme) => ({
+  drawer: {
+    width: drawerWidth,
+    flexShrink: 0,
+  },
+  drawerPaper: {
+    width: drawerWidth,
+  },
+}));
+
+const VerticalNavBar = () => {
+  const classes = useStyles();
+  const history = useHistory();
+
+  return (
+    <Drawer
+      className={classes.drawer}
+      variant="permanent"
+      anchor="right"
+      classes={{
+        paper: classes.drawerPaper,
+      }}
+    >
+      <List className='sidebar-container'>
+        <ListItem  onClick={() => history.push('/Favorite')}>
+          <ListItemIcon>
+            <FavoriteBorderIcon />
+          </ListItemIcon>
+          <ListItemText  />
+        </ListItem>
+        <ListItem  onClick={() => history.push('/Message')}>
+          <ListItemIcon>
+            <MessageIcon />
+          </ListItemIcon>
+          <ListItemText  />
+        </ListItem>
+        <ListItem  onClick={() => history.push('/Settings')}>
+          <ListItemIcon>
+            <SettingsIcon />
+          </ListItemIcon>
+          <ListItemText  />
+        </ListItem>
+        <ListItem  onClick={() => history.push('/Profile')}>
+          <ListItemIcon>
+            <PermIdentityIcon />
+          </ListItemIcon>
+          <ListItemText  />
+        </ListItem>
+      </List>
+    </Drawer>
+  );
+}
+
+export default VerticalNavBar;

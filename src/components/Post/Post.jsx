@@ -14,9 +14,9 @@ function Post(){
     
       return (
         <div>
-            
-            <PostsForm />
-           <h1>Posts</h1>
+        <PostsForm />
+ 
+           {/* <h1>Posts</h1>
         {
             posts.map((post) => {
                 return (
@@ -26,8 +26,10 @@ function Post(){
                     </div>
                 )
             })
-        }
+        } */}
+        
       </div>
+      
     )
 };
 

@@ -1,4 +1,4 @@
-/* html,
+html,
 body,
 #react-root {
   height: 100%;
@@ -12,7 +12,7 @@ body {
 img {
   display: inline-block;
   max-width: 100%;
-} */
+}
 
 /* --------------------------------------------------------------------------------
 Container
@@ -95,7 +95,7 @@ Alert
 Form Treatment
 -------------------------------------------------------------------------------- */
 
-/* .formPanel {
+/* /* .formPanel {
   box-sizing: border-box;
   width: 400px;
   max-width: 100%;
@@ -110,6 +110,11 @@ input {
   margin: 5px;
   margin-bottom: 10px;
 } */
+
+
+
+
+
 
 *{
   margin: 0;

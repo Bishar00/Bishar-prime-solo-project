@@ -21,6 +21,6 @@ export default function* rootSaga() {
     profileSaga(),
     fetchPostsSaga(),
     addToPostsSaga(),
-    updatePostsSaga()
+    updatePostsSaga(),
   ]);
 }

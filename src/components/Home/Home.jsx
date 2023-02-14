@@ -1,6 +1,7 @@
 import React from 'react';
 import './Home.css'
 import PostsForm from '../PostsForm/PostsForm';
+import Nav2 from '../Nav2/Nav2';
 import { useDispatch } from 'react-redux';
 import { useSelector } from 'react-redux';
 import { useEffect } from 'react';
@@ -19,12 +20,11 @@ function Home(){
       }, [dispatch]);
 
     return (
+      <div className="homeContainer">
         <div className="elements">
-            
-           <h1>Home</h1>
+           <h3>Home</h3>
            <div className='home'>
         {
-            
             posts.map((post) => {
                 return (
                     <HomeItem key={post.id} post={post}/>
@@ -33,10 +33,9 @@ function Home(){
         }
         </div>
       </div>
+      
+      </div>
     )
 };
-
-
-
 
 export default Home;

@@ -61,5 +61,22 @@ router.put('/', (req, res) => {
         });
 });
 
+router.delete('/:id', rejectUnauthenticated, (req,res) => {
+    const idToDelete = req.params.id;
+    const userId = req.user.id;
+    const sqlQuery= `DELETE FROM "posts" WHERE "id"=$1 AND "user_id"=$2;`;
+    const sqlValues = [idToDelete, userId];
+    pool.query(sqlQuery, sqlValues)
+        .then((result) => {
+            res.sendStatus(200);
+        })
+        .catch((error) => {
+            console.log(`Error making database query ${sqlQuery}`, error);
+            res.sendStatus(500);
+        });
+});
+
+
+
 
 module.exports = router

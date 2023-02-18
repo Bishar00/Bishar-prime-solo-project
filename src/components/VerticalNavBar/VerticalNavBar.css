@@ -12,6 +12,7 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
+
   }
   
   .sidebar-container a {
@@ -21,8 +22,15 @@
     height: 60px;
     width: 100%;
     border-bottom: 1px solid #000;
+
   }
   
   .sidebar-container a:last-child {
     border-bottom: none;
+
+    
+  }
+
+  .icon{
+  color: #1976d2
   }

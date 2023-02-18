@@ -5,7 +5,7 @@ const history = useHistory()
 const handleEdit = () => {
 history.push(`/EditPosts/${post.id}`)
 }
-
+ 
     return (
         <div onClick={handleEdit}>
        <div>
@@ -18,6 +18,7 @@ history.push(`/EditPosts/${post.id}`)
         <button onClick={handleEdit}>
             Edit
         </button>
+        
        </div>
        </div>
     )

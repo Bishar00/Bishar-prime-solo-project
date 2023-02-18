@@ -39,25 +39,25 @@ const VerticalNavBar = () => {
     >
       <List className='sidebar-container'>
         <ListItem  onClick={() => history.push('/Favorite')}>
-          <ListItemIcon>
+          <ListItemIcon className='icon'>
             <FavoriteBorderIcon />
           </ListItemIcon>
           <ListItemText  />
         </ListItem>
         <ListItem  onClick={() => history.push('/Message')}>
-          <ListItemIcon>
+          <ListItemIcon className='icon'>
             <MessageIcon />
           </ListItemIcon>
           <ListItemText  />
         </ListItem>
         <ListItem  onClick={() => history.push('/Settings')}>
-          <ListItemIcon>
+          <ListItemIcon className='icon'>
             <SettingsIcon />
           </ListItemIcon>
           <ListItemText  />
         </ListItem>
         <ListItem  onClick={() => history.push('/Profile')}>
-          <ListItemIcon>
+          <ListItemIcon className='icon'>
             <PermIdentityIcon />
           </ListItemIcon>
           <ListItemText  />

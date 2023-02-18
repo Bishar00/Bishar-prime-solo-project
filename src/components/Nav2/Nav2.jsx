@@ -38,7 +38,7 @@ const Nav2 = () => {
   };
 
   return (
-    <Box className="footer" sx={{ display: 'flex', justifyContent: 'center' }}>
+    <Box className="footer" sx={{ position: 'fixed', bottom: 0, width: '100%' }}>
       <Box sx={{ flexBasis: '300px' }}>
         {/* Add your sidebar component here */}
       </Box>

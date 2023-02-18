@@ -1,22 +1,15 @@
-const initialState = {
-    error: null
-};
-
-const deleteReducer = (state = initialState, action) => {
+const deleteReducer = (state = [], action) => {
     switch (action.type) {
-        case DELETE_POST_SUCCESS:
-            return {
-                ...state,
-                error: null
-            };
-        case DELETE_POST_FAIL:
-            return {
-                ...state,
-                error: action.payload
-            };
-        default:
-            return state;
+      case 'DELETE_POST':
+        return state.filter(post => post.id !== action.payload);
+      default:
+        return state;
     }
-};
-
-export default deleteReducer;
+  };
+  
+  export default deleteReducer;
+  
+  
+  
+  
+  

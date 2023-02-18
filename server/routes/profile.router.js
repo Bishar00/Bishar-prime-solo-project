@@ -22,6 +22,28 @@ router.get("/", rejectUnauthenticated,(req,res) => {
     })
 })
 
+router.post('/', rejectUnauthenticated,(req,res) => {
+    console.log(req.user);
+    console.log('adding a new post to Posts', req.body);
+    const brandName = req.body.brand_name
+    const logo =req.body.logo_upload
+    const vision= req.body.entity_vision
+    const image= req.body.image_upload
+    const user_id = req.user.id
+    const sqlQuery = ` 
+    INSERT INTO profile (brandName,logo_upload,entity_vision, image_upload, user_id)
+    VALUES
+    ($1, $2, $3,$4,$5);`;
+    const sqlValues = [brandName,logo,vision,image, user_id]
+    pool.query(sqlQuery, sqlValues)
+    .then ((response) => {
+        res.sendStatus(201)
+    })
+    .catch((error) => {
+        console.log('error in /api/post Post',error);
+        res.sendStatus(500);
+    })
+    })
 
 
 module.exports = router

@@ -1,0 +1,21 @@
+.homeContainer {
+    display: flex;
+    justify-content: center;
+    color:black;
+    
+  }
+  
+  .postContainer {
+    border: 0.5px solid #ccc;
+    margin: 0px;
+    padding: 10px;
+    width: 600px;
+    
+  }
+  
+  .postTitle {
+    font-size: 1.0rem;
+    font-weight: bold;
+    margin-bottom: 10px;
+    text-align: center;
+  }

@@ -39,7 +39,7 @@ function App() {
 
   return (
     <Router>
-        <Nav2/>
+        
 
         <Switch>
           {/* Visiting localhost:3000 will redirect to localhost:3000/home */}
@@ -175,6 +175,7 @@ function App() {
           
         </Switch>
         <VerticalNavBar />
+        <Nav2/>
 
     </Router>
      

@@ -6,6 +6,7 @@ import userSaga from './user.saga';
 import fetchPostsSaga from './Posts.saga';
 import addToPostsSaga from './addToPosts.saga';
 import updatePostsSaga from "./EditPosts.saga";
+import deletePostsSaga from './Delete.saga';
 // rootSaga is the primary saga.
 // It bundles up all of the other sagas so our project can use them.
 // This is imported in index.js as rootSaga
@@ -22,5 +23,6 @@ export default function* rootSaga() {
     fetchPostsSaga(),
     addToPostsSaga(),
     updatePostsSaga(),
+    deletePostsSaga()
   ]);
 }

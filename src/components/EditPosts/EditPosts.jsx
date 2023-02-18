@@ -1,63 +1,72 @@
 import React from "react";
-import { useState } from "react";
-import { useSelector } from "react-redux";
-import { useEffect } from "react";
-import { useDispatch } from "react-redux";
-import { useHistory } from "react-router-dom";
-import { useParams } from "react-router-dom";
+import { useParams, useHistory } from 'react-router-dom';
+import { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 
-function editPosts(){
-  const [titleInput, setTitleInput] =useState('');
-  const [descriptionInput, setDiscriptionInput] =useState('');
-    
- 
+function EditPosts(){
+
     const dispatch = useDispatch();
     const params= useParams()
-    const studentToEdit = useSelector((store) => store.studentToEdit);
+    const postToEdit = useSelector((store) => store.postToEdit);
     const history = useHistory();
-    
-    function updatePost(){
-      history.push('/Home')
-      dispatch({
-        type: 'SAGA/POST_TO_EDIT',
-        payload: {
-          title: titleInput,
-          description: descriptionInput
-        }
 
+    useEffect(() => {
+      console.log('this is post to edit reducer:', postToEdit);
+      // Yell at a Saga function to fetch data
+      // for the student we are editing!
+      dispatch({
+        type: 'SAGA/FETCH_POST_TO_EDIT',
+        payload: params.id
+      })
+      console.log('params.id should work, let us make sure!', params.id)
+      
+    }, [])
+
+const handleTitleChange = (evt) => {
+      dispatch({
+        type: 'SET_TITLE_CHANGE',
+        payload: evt.target.value
       })
     }
 
-    useEffect(() => {
-        // Yell at a Saga function to fetch data
-        // for the student we are editing!
-        console.log('params.id should work, let us make sure!', params.id)
-        
-      }, [])
+    const handleDescriptionChange = (evt) => {
+      dispatch({
+        type: 'SET_DESCRIPTION_CHANGE',
+        payload: evt.target.value
+      })
+    }
+    
+    const handleSubmit = (evt) => {
+      evt.preventDefault();
+      dispatch({
+        type: 'SAGA/UPDATE_POST',
+        payload: postToEdit
+      })
+      history.push('/');
+    }
 
 
+    
     return (
         <>
-        <form onSubmit={updatePost}>
+        <form>
             <input
-            value={titleInput}
+            value={postToEdit.title || ''}
             placeholder= "Enter item Title"
-            onChange={(event) => setTitleInput (event.target.value)}
+            onChange={handleTitleChange}
             />
             
             <input 
-            value={descriptionInput}
+            value={postToEdit.description || ''}
             placeholder= "Create Post"
-            onChange={(event) => {setDiscriptionInput (event.target.value)}}
+            onChange={handleDescriptionChange}
             />
     
-            <button type= 'submit'>
-                Post 
-            </button>
+    <button onClick={handleSubmit}>Post</button>
     
     
         </form>
         </>
     )
     }
-    export default editPosts;
+    export default EditPosts;

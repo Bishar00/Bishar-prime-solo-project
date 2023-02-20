@@ -1,4 +1,4 @@
-.postform{
+.edit-posts-form {
     border: 0.5px solid #ccc;
     margin: 0 auto; /* Centers the form horizontally */
     padding: 10px;
@@ -7,3 +7,8 @@
     flex-direction: column;
     align-items: center; /* Centers the form vertically */
   }
+  
+  
+  
+  
+  

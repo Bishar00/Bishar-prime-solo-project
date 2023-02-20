@@ -39,8 +39,8 @@ const VerticalNavBar = () => {
     >
       <List className='sidebar-container'>
         <ListItem  onClick={() => history.push('/Favorite')}>
-          <ListItemIcon className='icon'>
-            <FavoriteBorderIcon />
+          <ListItemIcon>
+            <FavoriteBorderIcon  className='icon'/>
           </ListItemIcon>
           <ListItemText  />
         </ListItem>

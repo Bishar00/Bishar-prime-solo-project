@@ -9,7 +9,7 @@ history.push(`/EditPosts/${post.id}`)
     return (
         <div onClick={handleEdit}>
        <div>
-        {post.title}
+        {/* {post.title} */}
        </div> 
        <div>
         {post.description}

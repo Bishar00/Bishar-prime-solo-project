@@ -10,7 +10,7 @@ router.get("/", rejectUnauthenticated,(req,res) => {
 
     const sqlQuery= `SELECT * FROM "profile"
         WHERE "user_id"=$1
-        ORDER BY "id";`
+        ORDER BY "user_id";`
 
     const sqlValues= [profileData];
     pool.query(sqlQuery, sqlValues)
@@ -40,7 +40,7 @@ router.post('/', rejectUnauthenticated,(req,res) => {
         res.sendStatus(201)
     })
     .catch((error) => {
-        console.log('error in /api/post Post',error);
+        console.log('error in /api/profile ',error);
         res.sendStatus(500);
     })
     })

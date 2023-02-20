@@ -9,8 +9,9 @@ const passport = require('./strategies/user.strategy');
 
 // Route includes
 const userRouter = require('./routes/user.router');
-// const profileRouter = require('./routes/profile.router');
+const profileRouter = require('./routes/profile.router');
 const postsRouter = require('./routes/posts.router');
+// const { s3Uploadv2 } = require('./s3service');
 
 // Body parser middleware
 app.use(bodyParser.json());
@@ -25,7 +26,7 @@ app.use(passport.session());
 
 /* Routes */
 app.use('/api/user', userRouter);
-// app.use('/api/profile', profileRouter);
+app.use('/api/profile', profileRouter);
 app.use('/api/posts', postsRouter);
 
 // Serve static files

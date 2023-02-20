@@ -24,5 +24,6 @@ export default function* rootSaga() {
     addToPostsSaga(),
     updatePostsSaga(),
     deletePostsSaga()
+    
   ]);
 }

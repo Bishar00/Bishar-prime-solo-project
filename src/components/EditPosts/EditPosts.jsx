@@ -3,6 +3,8 @@ import { useParams, useHistory } from 'react-router-dom';
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { makeStyles } from '@material-ui/core/styles';
+import TextField from '@material-ui/core/TextField';
+import Button from '@material-ui/core/Button';
 import './EditPosts.css';
 
 const useStyles = makeStyles((theme) => ({
@@ -40,7 +42,7 @@ function EditPosts(){
       
     }, [])
 
-    const classes = useStyles(); // Add this line to create the classes object
+    const classes = useStyles();
 
     const handleTitleChange = (evt) => {
       dispatch({
@@ -67,24 +69,31 @@ function EditPosts(){
 
     return (
         <>
-        <form>
-            <input
-            className={classes.titleInput} // Add class here
+        <form className='edit-posts-form'>
+          <TextField
+            className={classes.titleInput}
             value={postToEdit.title || ''}
-            placeholder= "Enter item Title"
+            label="Enter item Title"
+            variant="outlined"
             onChange={handleTitleChange}
-            />
-            
-            <input 
-            className={classes.descriptionInput} // Add class here
+          />
+          <TextField
+            className={classes.descriptionInput}
             value={postToEdit.description || ''}
-            placeholder= "Create Post"
+            label="Create Post"
+            multiline
+            rows={5}
+            variant="outlined"
             onChange={handleDescriptionChange}
-            />
-    
-            <button 
-            className={classes.submitButton} // Add class here
-            onClick={handleSubmit}>Post</button>
+          />
+          <Button 
+            className={classes.submitButton} 
+            variant="contained" 
+            color="primary" 
+            onClick={handleSubmit}
+          >
+            Post
+          </Button>
         </form>
         </>
     )

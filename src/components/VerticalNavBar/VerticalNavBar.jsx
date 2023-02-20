@@ -11,7 +11,6 @@ import MessageIcon from '@mui/icons-material/Message';
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import { useHistory } from 'react-router-dom';
 
-
 const drawerWidth = 50;
 
 const useStyles = makeStyles((theme) => ({
@@ -40,24 +39,24 @@ const VerticalNavBar = () => {
       <List className='sidebar-container'>
         <ListItem  onClick={() => history.push('/Favorite')}>
           <ListItemIcon>
-            <FavoriteBorderIcon  className='icon'/>
+            <FavoriteBorderIcon style={{ color: '#1976d2' }} className='icon' />
           </ListItemIcon>
           <ListItemText  />
         </ListItem>
         <ListItem  onClick={() => history.push('/Message')}>
-          <ListItemIcon className='icon'>
+          <ListItemIcon style={{ color: '#1976d2' }} className='icon'>
             <MessageIcon />
           </ListItemIcon>
           <ListItemText  />
         </ListItem>
         <ListItem  onClick={() => history.push('/Settings')}>
-          <ListItemIcon className='icon'>
+          <ListItemIcon style={{ color: '#1976d2' }} className='icon'>
             <SettingsIcon />
           </ListItemIcon>
           <ListItemText  />
         </ListItem>
         <ListItem  onClick={() => history.push('/Profile')}>
-          <ListItemIcon className='icon'>
+          <ListItemIcon style={{ color: '#1976d2' }} className='icon'>
             <PermIdentityIcon />
           </ListItemIcon>
           <ListItemText  />

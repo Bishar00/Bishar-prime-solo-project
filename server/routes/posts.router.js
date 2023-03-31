@@ -7,7 +7,7 @@ const { rejectUnauthenticated } = require('../modules/authentication-middleware'
 router.get('/', rejectUnauthenticated,(req,res) => {
     const postsDataID = req.user.id;
     console.log('req.user', postsDataID);
-    console.log('this is the res',res);
+    // console.log('this is the res',res);
 
     const sqlQuery= `SELECT * FROM "posts"
         WHERE "user_id"=$1

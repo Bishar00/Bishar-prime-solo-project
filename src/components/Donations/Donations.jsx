@@ -2,16 +2,39 @@ import React from 'react';
 import { Card, CardContent, CardActions, Button } from '@mui/material';
 
 function Donations(){
+    const packages1 = [
+        {
+          name: "Basic",
+          price: 10,
+          features: ["Bonus Content", "Monthly Vlog", "Exclusive Community"],
+        },
+        {
+          name: "Standard",
+          price: 20,
+          features: ["Bonus Content", "Weekly Vlog", "Discounted Merch"],
+        },
+        {
+          name: "Premium",
+          price: 30,
+          features: ["Exclusive advice", "Daily vlogs", "Direct Message"],
+        },
+      ];
+
     const packages = [
-        { name: 'Basic', price: 10, features: ['Feature 1', 'Feature 2', 'Feature 3'] },
-        { name: 'Standard', price: 50, features: ['Feature 1', 'Feature 2', 'Feature 3'] },
-        { name: 'Premium', price: 100, features: ['Feature 1', 'Feature 2', 'Feature 3'] }
+        { name: 'Basic', price: 10, features: ['Free T-Shirt', 'Bonus Content', 'Monthly Update'] },
+        { name: 'Standard', price: 50, features: ['Newsletter', 'Meet Arrivals', 'Event Tickets'] },
+        { name: 'Premium', price: 100, features: ['Free Merch', 'Volunteering Opportunity ', 'Event Tickets'] }
     ];
+
+    
 
     const handleSubscribe = (packageName) => {
         // Implement subscription logic here
     }
 
+
+
+    
     return (
         <div className='Donations-container'>
             <h3>Thank you for your support </h3>
@@ -29,7 +52,7 @@ function Donations(){
                                 </ul>
                             </CardContent>
                             <CardActions>
-                                <Button size="small" onClick={() => handleSubscribe(pkg.name)}>Donations</Button>
+                                <Button size="small" onClick={() => handleSubscribe(pkg.name)}>Donate</Button>
                             </CardActions>
                         </Card>
                     </div>

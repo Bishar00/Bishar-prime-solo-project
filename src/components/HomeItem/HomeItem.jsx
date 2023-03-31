@@ -1,27 +1,24 @@
 import { useHistory } from "react-router-dom";
-function HomeItem({post}){
-const history = useHistory()
+import "./HomeItem.css";
 
-const handleEdit = () => {
-history.push(`/EditPosts/${post.id}`)
-}
- 
-    return (
-        <div onClick={handleEdit}>
-       <div>
-        {/* {post.title} */}
-       </div> 
-       <div>
-        {post.description}
-       </div>
-       <div>
-        <button onClick={handleEdit}>
-            Edit
+function HomeItem({ post }) {
+  const history = useHistory();
+
+  const handleEdit = () => {
+    history.push(`/EditPosts/${post.id}`);
+  };
+
+  return (
+    <div onClick={handleEdit}>
+      <div>{/* {post.title} */}</div>
+      <div>{post.description}</div>
+      <div className="centerButton">
+        <button className="btnEdit" onClick={handleEdit}>
+          Edit
         </button>
-        
-       </div>
-       </div>
-    )
+      </div>
+    </div>
+  );
 }
 
 export default HomeItem;

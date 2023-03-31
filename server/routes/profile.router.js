@@ -22,28 +22,50 @@ router.get("/", rejectUnauthenticated,(req,res) => {
     })
 })
 
-router.post('/', rejectUnauthenticated,(req,res) => {
-    console.log(req.user);
-    console.log('adding a new post to Posts', req.body);
-    const brandName = req.body.brand_name
-    const logo =req.body.logo_upload
-    const vision= req.body.entity_vision
-    const image= req.body.image_upload
-    const user_id = req.user.id
-    const sqlQuery = ` 
-    INSERT INTO profile (brandName,logo_upload,entity_vision, image_upload, user_id)
-    VALUES
-    ($1, $2, $3,$4,$5);`;
-    const sqlValues = [brandName,logo,vision,image, user_id]
-    pool.query(sqlQuery, sqlValues)
-    .then ((response) => {
-        res.sendStatus(201)
-    })
-    .catch((error) => {
-        console.log('error in /api/profile ',error);
-        res.sendStatus(500);
-    })
-    })
+/** ---------- Multer | S3 ---------- **/
+require('dotenv').config();
+const multer = require('multer');
+const { s3Uploadv2 } = require('../s3Service');
+const { Try } = require('@mui/icons-material');
+
+const fileFilter = (req, file, cb) =>{
+    if(file.mimetype.split('/')[0] === 'image'){
+      cb(null, true)
+    } else{
+      cb(new multer.MulterError("LIMIT_UNEXPECTED_FILE"), false)
+    }
+}
+
+const storage = multer.memoryStorage()
+
+const upload = multer({ storage, fileFilter })
 
 
-module.exports = router
+router.post('/', upload.single("image"), async (req, res) => {
+    try {
+      console.log('issue with req.file', req.file);
+      const result = await s3Uploadv2(req.file);
+      const imageFile = result.Location;
+      const brandName = req.body.brand_name;
+      const logo = req.body.logo_upload;
+      const vision = req.body.entity_vision;
+      const user_id = req.user.id;
+  
+      const sqlQuery = `
+        INSERT INTO profile (brand_name, logo_upload, entity_vision, image_upload, user_id)
+        VALUES ($1, $2, $3, $4, $5)
+      ;`;
+  
+      const sqlValues = [brandName, logo, vision, imageFile, user_id];
+  
+      await pool.query(sqlQuery, sqlValues);
+  
+      res.sendStatus(200);
+    } catch (error) {
+      console.error(error);
+      res.status(500).json({ status: "failure", message: error.message });
+    }
+});
+
+
+module.exports = router;

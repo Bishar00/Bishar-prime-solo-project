@@ -3,15 +3,23 @@
     justify-content: center;
     color:black;
     
+    
   }
   
   .postContainer {
     border: 0.5px solid #ccc;
     margin: 0px;
     padding: 10px;
-    width: 600px;
-    
+    width: 1000px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
   }
+  .postContainer .btnDelete {
+    align-self: center
+  }
+ 
+
   
   .postTitle {
     font-size: 1.0rem;
@@ -19,3 +27,17 @@
     margin-bottom: 10px;
     text-align: center;
   }
+  
+  .btnDelete {
+    border: 1px solid #ddd;
+    padding: 5px 20px;
+    border-radius: 3px;
+    color: #333;
+    cursor: pointer;
+}
+
+.btnDelete:hover {
+    background-color: #888888;
+    transition: .3s ease-in;
+    color: #fff;
+}

@@ -11,7 +11,7 @@ const passport = require('./strategies/user.strategy');
 const userRouter = require('./routes/user.router');
 const profileRouter = require('./routes/profile.router');
 const postsRouter = require('./routes/posts.router');
-// const { s3Uploadv2 } = require('./s3service');
+const { s3Uploadv2 } = require('./s3service');
 
 // Body parser middleware
 app.use(bodyParser.json());
